@@ -1,0 +1,71 @@
+<div class="container">
+
+  <div class="card">
+
+    <h1>🎓 Student Management System</h1>
+
+    <div class="form-group">
+      <label>Student Name</label>
+      <input
+        type="text"
+        [(ngModel)]="studentName"
+        placeholder="Enter student name">
+    </div>
+
+    <div class="form-group">
+      <label>Course</label>
+      <input
+        type="text"
+        [(ngModel)]="course"
+        placeholder="Enter course">
+    </div>
+
+    <!-- Add Button -->
+    <button *ngIf="!editMode" (click)="addStudent()">
+      Add Student
+    </button>
+
+    <!-- Update Button -->
+    <button *ngIf="editMode" (click)="updateStudent()">
+      Update Student
+    </button>
+
+    <!-- Cancel Button -->
+    <button *ngIf="editMode" (click)="cancelEdit()">
+      Cancel
+    </button>
+
+    <hr>
+
+    <h2>Students</h2>
+
+    <table border="1" style="width:100%; border-collapse: collapse;">
+
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.name }}</td>
+          <td>{{ student.course }}</td>
+          <td>
+            <!-- ✅ Pass whole student object, not index -->
+            <button (click)="editStudent(student)">Edit</button>
+            <!-- ✅ Pass student.id, not index -->
+            <button (click)="deleteStudent(student.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+    <p>Total Students: {{ students.length }}</p>
+
+  </div>
+
+</div>
