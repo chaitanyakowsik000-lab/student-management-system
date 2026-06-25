@@ -12,22 +12,19 @@ app.use(express.json());
 // ======================
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Kowsik@7890',                               
-  database: 'studentdb'
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT
 });
 
 db.connect((err) => {
-
   if (err) {
-    console.log("❌ Database Connection Failed");
     console.log(err);
-    return;
+  } else {
+    console.log("✅ Connected to Railway MySQL");
   }
-
-  console.log("✅ MySQL Connected");
-
 });
 
 // ======================
