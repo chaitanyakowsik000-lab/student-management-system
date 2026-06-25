@@ -19,7 +19,7 @@ export class AppComponent {
   editIndex = -1;
   editId = -1;
 
-  private apiUrl = "http://localhost:3000/students";
+  private apiUrl = "https://student-management-system-t7uq.onrender.com/students";
 
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {
     this.loadStudents();
